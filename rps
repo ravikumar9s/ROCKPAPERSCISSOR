@@ -1,0 +1,79 @@
+import tkinter as tk
+import random as ran
+rps = ('ROCK','PAPER','SCISSORS')
+def clickr():
+    R = "ROCK"
+    c.delete(0, "end")
+    computer = (ran.choice(rps))
+    c.insert(0, computer)
+    if R=="ROCK" and computer=="PAPER":
+        d.delete(0,"end")
+        c.delete(0, "end")
+        c.insert(0, computer)
+        d.insert(0,"LOST")
+    elif R=="ROCK" and computer=="ROCK":
+        c.delete(0, "end")
+        d.delete(0, "end")
+        c.insert(0, computer)
+        d.insert(0,"DRAWN")
+    elif R=="ROCK" and computer=="SCISSORS":
+        c.delete(0, "end")
+        d.delete(0, "end")
+        c.insert(0, computer)
+        d.insert(0,"WON")
+def clickp():
+    P = "PAPER"
+    c.delete(0, 17)
+    computer = (ran.choice(rps))
+    c.insert(0, computer)
+    if P=="PAPER" and computer=="SCISSORS":
+        c.delete(0, "end")
+        d.delete(0, "end")
+        c.insert(0, computer)
+        d.insert(0,"LOST")
+    elif P=="PAPER" and computer=="PAPER":
+        c.delete(0, "end")
+        d.delete(0, "end")
+        c.insert(0, computer)
+        d.insert(0,"DRAWN")
+    elif P=="PAPER" and computer=="ROCK":
+        c.delete(0, "end")
+        d.delete(0,"end")
+        c.insert(0, computer)
+        d.insert(0,"WON")
+def clicks():
+    S = "SCISSORS"
+    c.delete(0, "end")
+    computer = (ran.choice(rps))
+    c.insert(0, computer)
+    if S=="SCISSORS" and computer=="ROCK":
+        c.delete(0, "end")
+        d.delete(0,"end")
+        c.insert(0, computer)
+        d.insert(0,"LOST")
+    elif S=="SCISSORS" and computer=="SCISSORS":
+        c.delete(0, "end")
+        d.delete(0,"end")
+        c.insert(0, computer)
+        d.insert(0,"DRAWN")
+    elif S=="SCISSORS" and computer=="PAPER":
+        c.delete(0, "end")
+        d.delete(0,"end")
+        c.insert(0, computer)
+        d.insert(0,"WON")
+root = tk.Tk()
+root.title("ROCK PAPER SCISSORS")
+root.configure(bg="yellow")
+root.geometry('400x400')
+l1 = tk.Label(text="Python : ",fg = "blue").place(x = 60,y = 0)
+br = tk.Button(text="ROCK",width=15,height=3,command=clickr,bg = "red")
+bp = tk.Button(text="PAPER",width=15,height=3,command=clickp,bg = "white")
+bs = tk.Button(text="SCISSORS",width=15,height=3,command=clicks,bg = "green")
+c = tk.Entry(width = 10)
+c.place(x = 50,y = 20)
+c.insert(0, "Click Them")
+d = tk.Entry(fg = "yellow",font = ('verdana',45,'bold'),bg = "blue")
+d.place(x = 40,y = 250,height = 130,width = 300)
+
+br.pack();bp.pack();bs.pack()
+root.mainloop()
